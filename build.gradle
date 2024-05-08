@@ -23,3 +23,6 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// Add task dependency to run tests when building
+check.dependsOn(test)
