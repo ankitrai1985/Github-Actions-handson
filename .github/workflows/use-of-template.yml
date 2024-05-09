@@ -1,4 +1,4 @@
-name: Template Workflow
+name: Templated main Workflow
 
 on:
   push:
@@ -9,7 +9,13 @@ on:
 jobs:
   build:
     name: Build
-    uses: ./.github/workflows/build.yml
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Use build template
+        uses: ./.github/workflows/build.yml@main
+        with:
+          build_branch: 'main'  # Pass the branch name to the template
 
   test:
     name: Run Tests

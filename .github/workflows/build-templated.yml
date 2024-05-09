@@ -1,0 +1,32 @@
+name: Build with Gradle
+
+on:
+  workflow_call:
+    inputs:
+      build_branch:
+        description: 'The branch to trigger the build'
+        required: true
+        default: 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.build_branch }}
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build with Gradle
+        run: ./gradlew build --console=plain
+
+      - name: Print success message
+        if: success()
+        run: echo "Build successful 🎉"
