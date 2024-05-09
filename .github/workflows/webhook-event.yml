@@ -1,0 +1,18 @@
+name: Webhook Event
+
+on:
+  push:
+  pull_request:
+  issues:
+  watch:
+  schedule:
+  workflow_dispatch:
+
+jobs:
+  print:
+    name: Print Event
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print event type
+        run: echo "Event type: ${{ github.event_name }}"
