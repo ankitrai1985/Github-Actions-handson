@@ -5,7 +5,7 @@ on:
   pull_request:
   issues:
   watch:
-  schedule:
+#  schedule:
   workflow_dispatch:
 
 jobs:
