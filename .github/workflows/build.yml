@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev  # Change this to your default branch if different
+      - main
   workflow_dispatch:
 
 jobs:
