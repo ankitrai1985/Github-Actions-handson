@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: ${{ github.workspace }}/my_ankit_artifact.txt
+          path: ${{ github.workspace }}/my_artifact.txt
 
       - name: Display output
         run: echo "Output value ${{ steps.set_output.my_output }} "
@@ -39,7 +39,7 @@ jobs:
           path: ${{ github.workspace }}
 
       - name: Display downloaded artifacts
-        run: cat ${{ github.workspace }}/my_ankit_artifact.txt
+        run: cat ${{ github.workspace }}/my_artifact.txt
 
       - name: Echo Message
         run: echo "Workflow using set-output, upload artifact, and download artifact is complete."
