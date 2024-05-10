@@ -1,0 +1,45 @@
+name : Artifact workflow
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set a value as an output
+        id: set_output
+        run: echo "::set-output name=my_output::Hello, world!"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: ${{ github.workspace }}/my_ankit_artifact.txt
+
+      - name: Display output
+        run: echo "Output value ${{ steps.set_output.my_output }} "
+
+  use_artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifacts@v2
+        with:
+          name: my-artifact
+          path: ${{ github.workspace }}
+
+      - name: Display downloaded artifacts
+        run: cat ${{ github.workspace }}/my_ankit_artifact.txt
+
+      - name: Echo Message
+        run: echo "Workflow using set-output, upload artifact, and download artifact is complete."
