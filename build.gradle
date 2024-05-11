@@ -26,3 +26,13 @@ tasks.named('test') {
 
 // Add task dependency to run tests when building
 check.dependsOn(test)
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			from components.java
+		}
+	}
+}
+
+tasks.publishToMavenLocal.dependsOn(tasks.assemble)
