@@ -45,3 +45,6 @@ jobs:
 
       - name: Print repo level VAR stored in Github
         run: echo "Repo level VAR stored in Github ---  ${{ env.MY_REPO_VAR }}"
+
+      - name: Print all environment variables
+        run: printenv
