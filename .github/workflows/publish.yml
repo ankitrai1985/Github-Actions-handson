@@ -14,6 +14,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17' # You can specify your desired Java version here
+          distribution: 'adopt'
 
       - name: Build and publish package
         run: |
