@@ -44,7 +44,7 @@ jobs:
         run: echo "Step-level environment variable $STEP_ENV_VAR"
 
       - name: Print repo level VAR stored in Github
-        run: echo "Repo level VAR stored in Github ---  ${{ env.MY_REPO_VAR }}"
+        run: echo "Repo level VAR stored in Github ---  ${{ env.ANKIT_NAME }}"
 
       - name: Print all environment variables
         run: printenv
