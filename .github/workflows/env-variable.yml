@@ -1,0 +1,47 @@
+name: Variable and secrets in workflow
+
+#define environment variable at global level
+env:
+  GLOBAL_ENV_VAR: "This is a global environment variable"
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    #define environment variable at job level
+    env:
+      JOB_ENV_VAR: "This is a job environment variable"
+
+    steps:
+      - name: Set repo name variable
+        run: echo "REPO_NAME=$(basename $PWD)" >> $GITHUB_ENV
+
+      - name: Print repo name
+        run: echo "repo name is $REPO_NAME"
+
+      - name: Print global environment variable
+        run: echo "Global environment variable ${{ env.GLOBAL_ENV_VAR }}"
+
+      - name: Print job environment variable
+        run: echo "Job environment variable ${{ env.JOB_ENV_VAR }}"
+
+      - name: Fetch and Print secret
+        run: echo "Secret value ${{ secrets.MY_SECRET }}"
+
+      #define environment variable at step level
+      - name: Set step level environment variable
+        run: echo "STEP_ENV_VAR=value" >> $GITHUB_ENV
+
+      - name: Print step level environment variable
+        run: echo "Step-level environment variable $STEP_ENV_VAR"
+
+      - name: Print repo level VAR stored in Github
+        run: echo "Repo level VAR stored in Github ---  ${{ MY_REPO_VAR }}"
