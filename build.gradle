@@ -42,8 +42,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/ankitrai1985/Github-Actions-handson")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
-                password = project.findProperty("gpr.key") ?: System.getenv("MY_PERSONAL_ACCESS_TOKEN")
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("MY_PERSONAL_ACCESS_TOKEN")
             }
         }
     }
