@@ -4,22 +4,21 @@ on: workflow_dispatch
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-
+    - name: Convert repository name to lowercase
+      id: repo
+      run: echo "::set-output name=repo::$(echo ${{ github.repository }} | awk '{print tolower($0)}')"
     - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1 
+      uses: docker/login-action@v1
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ github.repository | toLower }}:latest
+        tags: ghcr.io/${{ steps.repo.outputs.repo }}:latest
