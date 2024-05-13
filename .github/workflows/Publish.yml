@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: Publish Java package to Github packages
 
 on: workflow_dispatch
 
