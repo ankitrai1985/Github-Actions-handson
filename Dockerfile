@@ -1,5 +1,6 @@
 # Start with a base image containing Java runtime (Java 17)
-FROM openjdk:17-jdk-alpine
+# FROM openjdk:17-jdk-alpine
+FROM openjdk:11-jdk-alpine
 
 # Add Maintainer Info
 LABEL maintainer="ankitrai1985@github.com"
