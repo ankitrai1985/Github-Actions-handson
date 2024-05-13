@@ -43,7 +43,7 @@ publishing {
             url = uri("https://maven.pkg.github.com/ankitrai1985/Github-Actions-handson")
             credentials {
                 username = 'ankitrai1985'
-                password = System.getenv("MY_PERSONAL_ACCESS_TOKEN")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
