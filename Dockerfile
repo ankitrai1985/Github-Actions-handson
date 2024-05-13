@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-alpine
 LABEL maintainer="ankitrai1985@github.com"
 
 # Set application's JAR file
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=build/libs/*.jar
 
 # Add the application's JAR file to the container
 ADD ${JAR_FILE} app.jar
