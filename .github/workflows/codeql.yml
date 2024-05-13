@@ -1,4 +1,4 @@
-name: "CodeQL manul"
+name: "CodeQL manual"
 
 on: workflow_dispatch
 
