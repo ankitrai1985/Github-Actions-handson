@@ -40,7 +40,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/ankitrai1985/REPOSITORY")
+            url = uri("https://maven.pkg.github.com/ankitrai1985/Github-Actions-handson")
             credentials {
                 username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                 password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
