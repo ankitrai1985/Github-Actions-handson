@@ -19,7 +19,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.4'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.4'
-	compile 'org.apache.struts:struts2-core:2.3.15.1'
+	// compile 'org.apache.struts:struts2-core:2.3.15.1'
 }
 
 tasks.named('test') {
