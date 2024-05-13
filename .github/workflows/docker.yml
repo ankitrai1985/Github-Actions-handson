@@ -3,7 +3,29 @@ name: Docker Image CI
 on: workflow_dispatch
 
 jobs:
-  build:
+   build:
+    name: Build with Gradle
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build with Gradle
+        run: ./gradlew build --console=plain
+
+      - name: Print success message
+        if: success()
+        run: echo "Build successful 🎉"
+        
+   docker:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
