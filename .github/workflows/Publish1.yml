@@ -24,7 +24,7 @@ jobs:
       run: ./gradlew build
 
     - name: Publish to GitHub Packages
-      run: ./gradlew publish
+      run: ./gradlew publish --stacktrace
       env:
         GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }} # GITHUB_TOKEN is the GitHub Packages token
         GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
