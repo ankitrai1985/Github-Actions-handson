@@ -1,29 +1,35 @@
-name: "CodeQL manual"
+name: "CodeQL"
 
 on: workflow_dispatch
 
 jobs:
   analyze:
-    name: Analyze
+    name: Analyze (${{ matrix.language }})
     runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['java'] # replace with your project's languages
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
+    
     - name: Set up JDK 17
       uses: actions/setup-java@v2
       with:
-        distribution: 'adopt'
         java-version: '17'
-
-    - name: Build with Gradle
-      run: ./gradlew build --console=plain
+        distribution: 'adopt'
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v3
       with:
-        languages: "java"
+        languages: ${{ matrix.language }}
 
-    - name: Analyze
-      uses: github/codeql-action/analyze@v2
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
