@@ -1,4 +1,4 @@
-name: Templated main Workflow
+name: Consume Build with Gradle Template
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Use build template
-        uses: ./.github/workflows/build.yml@main
+        uses: ./.github/workflows/build-templated.yml@main
         with:
           build_branch: 'main'  # Pass the branch name to the template
 
