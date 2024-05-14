@@ -1,4 +1,4 @@
-name: labled
+name: labled-1
 
 on:
   pull_request:
