@@ -1,0 +1,13 @@
+name: Caller Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger_called_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Called Workflow
+        uses: ./.github/workflows/called-workflow.yml
