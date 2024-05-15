@@ -9,7 +9,7 @@
           uses: actions/checkout@v2
 
         - name: Call reusable workflow
-          uses: ./.github/workflows/reusable_workflow.yml
+          uses: ankitrai1985/Github-Actions-handson/.github/workflows/reusable_workflow.yml@main
           with:
             name: 'Ankit Rai'
             token: ${{ secrets.GITHUB_TOKEN }}
