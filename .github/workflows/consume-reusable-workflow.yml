@@ -1,4 +1,4 @@
-  name: Consume Workflow
+  name: Consume Workflow main
   on: workflow_dispatch
 
   jobs:
