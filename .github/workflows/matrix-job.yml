@@ -1,0 +1,20 @@
+name: Matrix Job
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        version: ['1.0', '2.0', '3.0']
+        environment: ['dev', 'test', 'prod']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Print job configuration
+        run: |
+          echo "Building version ${{ matrix.version }} for environment ${{ matrix.environment }}"
