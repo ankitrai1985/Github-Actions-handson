@@ -1,12 +1,6 @@
 name: Event Trigger Example
 
-on:
-  workflow_dispatch
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, closed]
+on: workflow_dispatch
 
 jobs:
   check_event:
