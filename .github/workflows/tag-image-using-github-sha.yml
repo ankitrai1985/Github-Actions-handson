@@ -1,4 +1,4 @@
-name: Docker Build and Tag
+name: Build Docker Image with JAR and Tag with GITHUB_SHA
 
 on: workflow_dispatch
 
@@ -10,8 +10,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Build JAR
+        run: ./gradlew build   # Assuming Gradle Wrapper is used
+
       - name: Build Docker Image
-        run: docker build -t my-docker-image .
+        run: |
+          docker build -t my-docker-image .
 
       - name: Tag Docker Image with GITHUB_SHA
         run: |
