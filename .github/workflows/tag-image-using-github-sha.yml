@@ -4,14 +4,25 @@ on: workflow_dispatch
 
 jobs:
   build:
+    name: Build with Gradle
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build JAR
-        run: ./gradlew build   # Assuming Gradle Wrapper is used
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build with Gradle
+        run: ./gradlew build --console=plain
+
+      - name: Print success message
+        if: success()
+        run: echo "Build successful 🎉"
 
       - name: Build Docker Image
         run: |
