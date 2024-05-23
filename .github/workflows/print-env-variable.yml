@@ -1,0 +1,16 @@
+name: Print Environment Variables
+
+on: workflow_dispatch
+
+jobs:
+  print-vars:
+    runs-on: ubuntu-latest
+    environment: 
+      name: ${{ github.event.inputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Print environment variables
+        run: |
+          echo "MY_CURRENT_ENV : ${{ env.MY_CURRENT_ENV }}"
