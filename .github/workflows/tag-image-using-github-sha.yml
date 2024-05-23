@@ -1,0 +1,22 @@
+name: Docker Build and Tag
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build Docker Image
+        run: docker build -t my-docker-image .
+
+      - name: Tag Docker Image with GITHUB_SHA
+        run: |
+          IMAGE_ID=$(docker images -q my-docker-image)
+          docker tag $IMAGE_ID my-docker-image:$GITHUB_SHA
+
+      - name: Push Docker Image
+        run: docker push my-docker-image:$GITHUB_SHA
