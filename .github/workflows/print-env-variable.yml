@@ -18,4 +18,4 @@ jobs:
 
       - name: Print environment variables
         run: |
-          echo "MY_CURRENT_ENV : ${{ env.MY_CURRENT_ENV }}"
+          echo "MY_CURRENT_ENV : ${{ vars.MY_CURRENT_ENV }}"
