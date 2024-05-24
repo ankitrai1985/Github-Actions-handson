@@ -1,0 +1,9 @@
+{
+  "name": "Hello World JS Action",
+  "version": "1.0.0",
+  "description": "Your action description",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.0.0"
+  }
+}
