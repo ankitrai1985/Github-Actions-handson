@@ -23,6 +23,9 @@ jobs:
         run: npm install
         working-directory: ./
 
+      - name: Install @actions/core and @actions/github
+        run: npm install @actions/core @actions/github
+
       - name: Run the action
         uses: ankitrai1985/custom-github-action@v4
         with:
