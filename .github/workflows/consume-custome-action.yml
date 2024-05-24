@@ -1,5 +1,11 @@
 name: My Workflow
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      who-to-greet:
+        description: 'Who to greet'
+        required: true
+        default: 'World'
 
 jobs:
   build:
@@ -13,13 +19,11 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Change directory
-        run: cd .github
-
       - name: Install dependencies
         run: npm install
+        working-directory: ./.github
 
       - name: Run the action
         uses: ./.github
         with:
-          who-to-greet: 'World'
+          who-to-greet: ${{ github.event.inputs.who-to-greet }}
