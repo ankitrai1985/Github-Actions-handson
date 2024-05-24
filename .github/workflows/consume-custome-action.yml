@@ -24,6 +24,6 @@ jobs:
         working-directory: ./.github
 
       - name: Run the action
-        uses: ankitrai1985/Github-Actions-handson@v3
+        uses: ankitrai1985/custom-github-action@v1
         with:
           who-to-greet: ${{ github.event.inputs.who-to-greet }}
