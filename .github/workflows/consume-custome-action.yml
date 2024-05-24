@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./.github
+        working-directory: ./
 
       - name: Run the action
         uses: ankitrai1985/custom-github-action@v2
