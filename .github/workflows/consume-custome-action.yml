@@ -1,5 +1,5 @@
 name: My Workflow
-on: 
+on:
   workflow_dispatch:
     inputs:
       who-to-greet:
@@ -23,10 +23,18 @@ jobs:
         run: npm install
         working-directory: ./
 
-      - name: Install @actions/core and @actions/github
+      - name: Checkout action code
+        uses: actions/checkout@v2
+        with:
+          repository: ankitrai1985/custom-github-action
+          ref: v4
+          path: ./custom-github-action
+
+      - name: Install action dependencies
         run: npm install @actions/core @actions/github
+        working-directory: ./custom-github-action
 
       - name: Run the action
-        uses: ankitrai1985/custom-github-action@v4
+        uses: ./custom-github-action
         with:
           who-to-greet: ${{ github.event.inputs.who-to-greet }}
