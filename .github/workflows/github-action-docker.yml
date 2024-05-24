@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: ankitrai1985/github-custom-action-docker@v1
+        uses: ankitrai1985/github-custom-action-docker@v2
